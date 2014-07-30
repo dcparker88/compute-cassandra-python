@@ -13,11 +13,11 @@
 # limitations under the License.
 
 # Global configuration variables
-NODES_PER_ZONE = 3             # Define number of nodes to create in each
+NODES_PER_ZONE = 4             # Define number of nodes to create in each
                                # zone.  GCE typically has two zones per region
                                # so this would create a 6 node C* cluster
 
-MAX_NODES = 9                  # Prevents excessive number of nodes to be
+MAX_NODES = 12                  # Prevents excessive number of nodes to be
                                # created.  If NODES_PER_ZONE * number_of_zones
                                # is > than MAX_NODES, the script will raise an
                                # error and exit.  GCE typically has 2 zones per
@@ -27,7 +27,7 @@ NODE_PREFIX = "cassnode"       # All nodenames begin with this string.  This is
                                # how the scripts determine what nodes belong to
                                # the C* cluster.
 
-MACHINE_TYPE = "n1-standard-1" # The machine type used for all cluster nodes
+MACHINE_TYPE = "n1-standard-8" # The machine type used for all cluster nodes
 
 API_VERSION = "v1"             # GCE API version
 
@@ -42,13 +42,16 @@ GCE_USERNAME = ""              # Use this to override the local environment.
                                # GCE instances in order to fetch the JRE
                                # install file from GCS
 
-GCS_BUCKET = "mybucket"        # Specify bucket housing JRE7 install file
-JRE7_INSTALL = "jre-7u51-linux-x64.tar.gz" # Basenamne of downloaded JRE file
-JRE7_VERSION = "jre1.7.0_51"   # Path version string of extracted JRE
+GCS_BUCKET = "esv-java"        # Specify bucket housing JRE7 install file
+JRE7_INSTALL = "jdk-7u65-linux-x64.tar.gz" # Basenamne of downloaded JRE file
+JRE7_VERSION = "jdk1.7.0_65"   # Path version string of extracted JRE
 
 VERBOSE = False                # Eat gcutil's stdout/stderr unless True. If
                                # debugging script issues, set this to True
                                # and re-run the scripts
+DISK_TYPE = "pd-ssd"           # add SSDs or not
+
+DISK_SIZE = "15"               # how big to make the boot disk
 #############################################################################
 
 # Moving below configuration block since the startup script only

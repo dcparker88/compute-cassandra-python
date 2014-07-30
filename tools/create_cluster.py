@@ -57,6 +57,8 @@ def create_nodes(zones):
                     "--service_version=%s" % API_VERSION,
                     "addinstance", nodename, "--zone=%s" % zone,
                     "--machine_type=%s" % MACHINE_TYPE, "--image=%s" % IMAGE,
+		    "--boot_disk_size_gb=%s" % DISK_SIZE,
+		    "--boot_disk_type=%s" % DISK_TYPE,
                     "--service_account_scopes=%s" % SCOPES,
                     "--wait_until_running"], stdout=NULL, stderr=NULL)
             if r != 0:
